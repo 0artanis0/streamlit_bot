@@ -10,9 +10,9 @@ with st.sidebar:
     openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
     openai_api_key = "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"
 
-st.title("💬 Chatbot")
+st.title("💬 王门GPT内测版")
 if "messages" not in st.session_state:
-    st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
+    st.session_state["messages"] = [{"role": "assistant", "content": "欢迎来到王门GPT内测版，调用模型为gpt-4o-2024-08-06，内测版本暂时无需输入key，请提问"}]
 
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
@@ -28,7 +28,7 @@ if prompt := st.chat_input():
     # 将user的输入展示到页面的对话框中
     st.chat_message("user").write(prompt)
     # 调用openai的接口，获取chatgpt的回复
-    response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=st.session_state.messages)
+    response = openai.ChatCompletion.create(model="gpt-4o-2024-08-06", messages=st.session_state.messages)
     msg = response.choices[0].message
     # 将openai的回复添加到session里面
     st.session_state.messages.append(msg)
