@@ -8,6 +8,7 @@ import openai
 import streamlit as st
 with st.sidebar:
     openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
+    openai_api_key = "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"
 
 st.title("💬 Chatbot")
 if "messages" not in st.session_state:
@@ -17,9 +18,6 @@ for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
 
 if prompt := st.chat_input():
-    if not openai_api_key:
-        st.info("Please add your OpenAI API key to continue.")
-        st.stop()
     # 申明openai_key
     openai.api_key = openai_api_key
     # 将user的输入添加到session里面
