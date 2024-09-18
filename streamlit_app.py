@@ -12,7 +12,7 @@ with st.sidebar:
 
 st.title("💬 王门GPT内测版")
 if "messages" not in st.session_state:
-    st.session_state["messages"] = [{"role": "assistant", "content": "欢迎来到王门GPT内测版，调用模型为gpt-3.5-turbo，内测版本暂时无需输入key，请提问"}]
+    st.session_state["messages"] = [{"role": "assistant", "content": "欢迎来到王门GPT内测版，调用模型为gpt-3.5-turbo ，内测版本暂时无需输入key，请提问"}]
 
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
