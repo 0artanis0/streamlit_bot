@@ -12,7 +12,7 @@ with st.sidebar:
 
 st.title("💬 王门GPT内测版")
 if "messages" not in st.session_state:
-    st.session_state["messages"] = [{"role": "assistant", "content": "欢迎来到王门GPT内测版，调用模型为gpt-4o-2024-08-06，内测版本暂时无需输入key，请提问"}]
+    st.session_state["messages"] = [{"role": "assistant", "content": "欢迎来到王门GPT内测版，调用模型为gpt-3.5-turbo，内测版本暂时无需输入key，请提问"}]
 
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
@@ -25,7 +25,7 @@ if prompt := st.chat_input():
     # 将user的输入展示到页面的对话框中
     st.chat_message("user").write(prompt)
     # 调用openai的接口，获取chatgpt的回复
-    response = openai.ChatCompletion.create(model="gpt-4o-2024-08-06", messages=st.session_state.messages)
+    response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=st.session_state.messages)
     msg = response.choices[0].message
     # 将openai的回复添加到session里面
     st.session_state.messages.append(msg)
